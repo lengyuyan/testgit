@@ -1,0 +1,6 @@
+[root@vx-1 storware]sed -i 's/\r$//' /usr/local/hstor/sms_install/usr/bin/storservice
+sed：无法读取 /usr/local/hstor/sms_install/usr/bin/storservice：没有那个文件或目录
+[root@vx-1 storware]pwd
+/mnt/bugfix/gpz/back/trunk/storware
+[root@vx-1 storware]sed -i 's/\r$//' ../distribution/VX1600_NAS/sms_install/usr/bin/storservice 
+[root@vx-1 storware]

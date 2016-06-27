@@ -1,0 +1,81 @@
+1、mout代码（10.222.195.8，root/passwd）
+先共享//10.222.2.57/back这个目录，然后在10.222.195.8可以用mount挂载到/root/szs,
+username为自己的,password=xxx
+
+mount -t cifs -o username=xxx,password=xxx,file_mode=0777,dir_mode=0777 //10.222.2.57/back /root/szs
+
+
+
+2、make代码（内核代码、lib代码分开进行）
+-b storagemod表示编译成一个标识符
+/opt/HP_Fortify/HP_Fortify_SCA_and_Apps_4.21/bin/sourceanalyzer -b storagemod touchless make mod PRO_TYPE=VX1600 NAS_OPT=n
+也可以进入raid模块只编译raid模块；
+/opt/HP_Fortify/HP_Fortify_SCA_and_Apps_4.21/bin/sourceanalyzer -b storagemod touchless make mod PRO_TYPE=VX1600 NAS_OPT=n
+/opt/HP_Fortify/HP_Fortify_SCA_and_Apps_4.21/bin/sourceanalyzer -b storagelib touchless make lib PRO_TYPE=VX1600 NAS_OPT=n
+
+3、分析代码，生成分析报告（内核代码、lib代码分开进行）
+storagemod -scan -f storagemod.fpr：分析成fpr模式的报告:
+/opt/HP_Fortify/HP_Fortify_SCA_and_Apps_4.21/bin/sourceanalyzer -b storagemod -scan -f storagemod.fpr
+/opt/HP_Fortify/HP_Fortify_SCA_and_Apps_4.21/bin/sourceanalyzer -b storagelib -scan -f storagelib.fpr
+
+
+具体sourceanalyzer 可以通过help来获取；
+
+4，linux挂载windows目录：
+a,首先目录是共享的；
+b,例子：登陆到10.222.195.8
+先共享//10.222.2.57/back这个目录，然后在10.222.195.8可以用mount挂载到/root/szs,
+username为自己的,password=xxx
+
+mount -t cifs -o username=xxx,password=xxx,file_mode=0777,dir_mode=0777 //10.222.2.57/back /root/szs
+
+5，linux挂载linux目录：
+Linux的mount命令可谓强大，可以将远程机器的目录来挂接到本地作为一个目录存在，以后你就如同访问本地目录一下的访问远程目录。
+为了达到这个目的你需要做至少两件事情：
+1.在被mount的机器上做nfs的设定
+2.在需要mount的机器上做mount设定。
+ 
+首先来看如何在被mount的机器（PC_A)上做设定。
+其实这是通过nfs(network file system)来实现的。在/etc目录下有一个文件exports来定义所有允许共享的目录和设置；第一步需要做的就是在这里面增加一个选项。
+例如:我们需要将/opt目录共享出去，那么添加
+/opt *(rw, sync) 或者：
+ /mnt/bugfix/xxx/ 191.168.*.*(rw,no_root_squash,no_all_squash,sync)
+-----把xxx目录允许191.168网段的ip读写，跟共享目录者具有相同权限
+（
+all_squash：所有访问用户都映射为匿名用户或用户组；
+no_all_squash（默认）：访问用户先与本机用户匹配，匹配失败后再映射为匿名用户或用户组；
+root_squash（默认）：将来访的root用户映射为匿名用户或用户组；
+no_root_squash：来访的root用户保持root帐号权限
+）
+
+这里包括三个部分：
+/opt是命令的共享目录
+*是允许访问这个目录的IP地址（有的说是域名，不过我试了设定IP地址不成功）
+(rw,sync)：这个是设置访问的属性，例如rw表示读写，sync表示同时写到内存和磁盘
+具体的内容，还可以参见nfs的设置。
+这里设置好了之后需要重启nfs来让这个work，命令是：
+./nfs restart
+这个命令在/etc/rc.d/init.d下面
+然后看到：
+Shutting down NFS mountd:                                  [  OK  ]
+Shutting down NFS daemon:                                  [  OK  ]
+Shutting down NFS services:                                [  OK  ]
+Starting NFS services:                                     [  OK  ]
+Starting NFS daemon:                                       [  OK  ]
+Starting NFS mountd:                                       [  OK  ]
+表示OK了。
+ 
+第二步需要到需要mount的机器上执行几条命令；这个命令需要root权限，两个方法可以做到：
+1.在/etc/fstab中增加命令，如下：
+192.168.215.10:/opt /home/ttt/opt
+然后保存；再执行mount -a
+2.在命令行直接执行
+mount 192.168.215.10:/opt /home/ttt/opt
+ 
+如果不出错，那么应该是mount成功了，然后到指定目录/home/ttt/opt下就可以找到了。
+ 
+ 
+注意，/home/ttt/opt需要事先(实现)创建好。
+
+
+

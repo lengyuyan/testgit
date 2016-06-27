@@ -1,0 +1,6 @@
+gcc -O0 -Wall -g -DSW_DEBUG_VERSION -DIT_TEST   
+/// -Wall 会打开一些很有用的警告选项，建议编译时加此选项 
+-O0  编译无优化
+-O2  编译优化内存使用
+-DSW_DEBUG_VERSION -DIT_TEST 为自己加的
+gcc -O2 -Wall

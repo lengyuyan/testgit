@@ -1,0 +1,14 @@
+objdump -j .text -Sl raid.ko >raid.txt	
+
+
+计算行数：
+如堆栈打在下面函数：
+Dec  8 17:33:38 localhost kernel: RIP: 0010:[<ffffffffa0752f1d>]  [<ffffffffa0752f1d>] v3_lun_topo_show+0x4c7/0x9d5 [raid]
+
+用objdump -j .text -Sl raid.ko >raid.txt	在对应ko,这里为raid.ko里面执行；
+
+在raid.txt里找v3_lun_topo_show函数：
+00000000000bfa56 v3_lun_topo_show
+objdump -j .text -Sl raid.ko>raid.txt
+然后用它的地址+偏移0x4c7，就等于堆栈的行数；
+

@@ -1,0 +1,17 @@
+echo 除了 -n options 之外，常用選項還有：
+        -e ：啟用反斜線控制字符的轉換(參考下表)
+        -E：關閉反斜線控制字符的轉換(預設如此)
+        -n ：取消行末之換行符號(與 -e 選項下的 \c 字符同意)
+
+關於 echo 命令所支援的反斜線控制字符如下表：
+        \a：ALERT / BELL (從系統喇叭送出鈴聲)
+        \b：BACKSPACE ，也就是向左退格鍵
+        \c：取消行末之換行符號
+        \E：ESCAPE，跳脫鍵
+        \f：FORMFEED，換頁字符
+        \n：NEWLINE，換行字符
+        \r：RETURN，回車鍵
+        \t：TAB，表格跳位鍵
+        \v：VERTICAL TAB，垂直表格跳位鍵
+        \n：ASCII 八進位編碼(以 x 開首為十六進位)
+        \\：反斜線本身

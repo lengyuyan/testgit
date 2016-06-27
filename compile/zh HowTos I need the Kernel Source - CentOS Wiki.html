@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0057)http://wiki.centos.org/zh/HowTos/I_need_the_Kernel_Source -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="robots" content="index,nofollow">
+
+<title>zh/HowTos/I need the Kernel Source - CentOS Wiki</title>
+<script type="text/javascript" src="./zh HowTos I need the Kernel Source - CentOS Wiki_files/common.js"></script>
+
+<script type="text/javascript">
+<!--// common functions
+
+// We keep here the state of the search box
+searchIsDisabled = false;
+
+function searchChange(e) {
+    // Update search buttons status according to search box content.
+    // Ignore empty or whitespace search term.
+    var value = e.value.replace(/\s+/, '');
+    if (value == '' || searchIsDisabled) { 
+        searchSetDisabled(true);
+    } else {
+        searchSetDisabled(false);
+    }
+}
+
+function searchSetDisabled(flag) {
+    // Enable or disable search
+    document.getElementById('fullsearch').disabled = flag;
+    document.getElementById('titlesearch').disabled = flag;
+}
+
+function searchFocus(e) {
+    // Update search input content on focus
+    if (e.value == '搜索') {
+        e.value = '';
+        e.className = '';
+        searchIsDisabled = false;
+    }
+}
+
+function searchBlur(e) {
+    // Update search input content on blur
+    if (e.value == '') {
+        e.value = '搜索';
+        e.className = 'disabled';
+        searchIsDisabled = true;
+    }
+}
+
+function actionsMenuInit(title) {
+    // Initialize action menu
+    for (i = 0; i < document.forms.length; i++) {
+        var form = document.forms[i];
+        if (form.className == 'actionsmenu') {
+            // Check if this form needs update
+            var div = form.getElementsByTagName('div')[0];
+            var label = div.getElementsByTagName('label')[0];
+            if (label) {
+                // This is the first time: remove label and do buton.
+                div.removeChild(label);
+                var dobutton = div.getElementsByTagName('input')[0];
+                div.removeChild(dobutton);
+                // and add menu title
+                var select = div.getElementsByTagName('select')[0];
+                var item = document.createElement('option');
+                item.appendChild(document.createTextNode(title));
+                item.value = 'show';
+                select.insertBefore(item, select.options[0]);
+                select.selectedIndex = 0;
+            }
+        }
+    }
+}
+//-->
+</script>
+
+
+<link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="./zh HowTos I need the Kernel Source - CentOS Wiki_files/common.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="screen" href="./zh HowTos I need the Kernel Source - CentOS Wiki_files/screen.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="print" href="./zh HowTos I need the Kernel Source - CentOS Wiki_files/print.css">
+<link rel="stylesheet" type="text/css" charset="utf-8" media="projection" href="./zh HowTos I need the Kernel Source - CentOS Wiki_files/projection.css">
+
+<!-- css only for MSIE browsers -->
+<!--[if IE]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/wiki/modern-CentOS/css/msie.css">
+<![endif]-->
+
+
+
+<link rel="Start" href="http://wiki.centos.org/FrontPage">
+<link rel="Alternate" title="维基标记" href="http://wiki.centos.org/zh/HowTos/I_need_the_Kernel_Source?action=raw">
+<link rel="Alternate" media="print" title="打印视图" href="http://wiki.centos.org/zh/HowTos/I_need_the_Kernel_Source?action=print">
+<link rel="Up" href="http://wiki.centos.org/zh/HowTos">
+<link rel="Search" href="http://wiki.centos.org/FindPage">
+<link rel="Index" href="http://wiki.centos.org/TitleIndex">
+<link rel="Glossary" href="http://wiki.centos.org/WordIndex">
+<link rel="Help" href="http://wiki.centos.org/HelpOnFormatting">
+</head>
+
+<body lang="zh" dir="ltr">
+
+
+<div id="header">
+<div id="logo"><a href="http://wiki.centos.org/FrontPage"><img src="./zh HowTos I need the Kernel Source - CentOS Wiki_files/modern-CentOS-logo.png" alt="CentOS"></a></div>
+<ul id="username"><li><a href="http://wiki.centos.org/zh/HowTos/I_need_the_Kernel_Source?action=login" id="login">登录</a></li></ul>
+
+
+<ul class="navibar">
+<li class="wikilink"><a href="http://wiki.centos.org/FrontPage">FrontPage</a></li><li class="wikilink"><a href="http://wiki.centos.org/Documentation">Help</a></li><li class="wikilink"><a href="http://wiki.centos.org/TipsAndTricks">Tips and Tricks</a></li><li class="wikilink"><a href="http://wiki.centos.org/HowTos">How To</a></li><li class="wikilink"><a href="http://wiki.centos.org/FAQ">FAQs</a></li><li class="wikilink"><a href="http://wiki.centos.org/Events">Events</a></li><li class="wikilink"><a href="http://wiki.centos.org/Contribute">Contribute</a></li><li class="wikilink"><a href="http://wiki.centos.org/Newsletter/Latest">Newsletter</a></li><li class="wikilink"><a href="http://wiki.centos.org/RecentChanges">Changelog</a></li><li class="current"><a href="./zh HowTos I need the Kernel Source - CentOS Wiki_files/zh HowTos I need the Kernel Source - CentOS Wiki.html">I need the Kernel Source</a></li>
+</ul>
+
+<div class="pageline"><hr style="display:none;"></div>
+
+</div>
+<div id="locationline">
+
+<form id="searchform" method="get" action="">
+<div>
+<input type="hidden" name="action" value="fullsearch">
+<input type="hidden" name="context" value="180">
+<label for="searchinput" style="display: none;">搜索:</label>
+<input id="searchinput" type="text" name="value" value="" size="20" onfocus="searchFocus(this)" onblur="searchBlur(this)" onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search" class="disabled">
+<input id="fullsearch" name="fullsearch" type="submit" value="正文" alt="Search Full Text" disabled="">
+<input id="titlesearch" name="titlesearch" type="submit" value="标题" alt="Search Titles" disabled="">
+</div>
+</form>
+<script type="text/javascript">
+<!--// Initialize search form
+var f = document.getElementById('searchform');
+f.getElementsByTagName('label')[0].style.display = 'none';
+var e = document.getElementById('searchinput');
+searchChange(e);
+searchBlur(e);
+//-->
+</script>
+
+
+
+<ul id="pagelocation">
+<li><a href="http://wiki.centos.org/zh">zh</a></li><li><a href="http://wiki.centos.org/zh/HowTos">HowTos</a></li><li><a class="backlink" title="点击对这个标题进行全文检索" href="http://wiki.centos.org/zh/HowTos/I_need_the_Kernel_Source?action=fullsearch&value=linkto%3A%22zh/HowTos/I+need+the+Kernel+Source%22&context=180">I need the Kernel Source</a></li>
+</ul>
+
+</div>
+
+<div id="page" lang="zh" dir="ltr">
+<div dir="ltr" id="content" lang="zh"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-3"></span><span class="anchor" id="line-4"></span><p class="line867">
+</p><h1 id="head-f9824e0da68111b930cb2fe5df792bd6a47bb117">我需要内核的源代码</h1>
+<span class="anchor" id="line-5"></span><p class="line862">英文版由 <a href="http://wiki.centos.org/JohnnyHughes">JohnnyHughes</a> 创建。现时由 <a href="http://wiki.centos.org/AlanBartlett">AlanBartlett</a> 及 <a href="http://wiki.centos.org/AkemiYagi">AkemiYagi</a> 维护。 <span class="anchor" id="line-6"></span><span class="anchor" id="line-7"></span></p><p class="line867"></p><div class="table-of-contents"><p class="table-of-contents-heading">Contents</p><ol><li><a href="http://wiki.centos.org/zh/HowTos/I_need_the_Kernel_Source#head-963cd44439b8c10fa507fa0c90725029c060108a">或许你不需要整个内核的源代码</a></li><li><a href="http://wiki.centos.org/zh/HowTos/I_need_the_Kernel_Source#head-940c9908fff987db121be81944a43e5aa88dcd6b">如果你真的需要整个内核的源代码</a></li></ol></div> <span class="anchor" id="line-8"></span><span class="anchor" id="line-9"></span><p class="line867">
+</p><h2 id="head-963cd44439b8c10fa507fa0c90725029c060108a">1. 或许你不需要整个内核的源代码</h2>
+<span class="anchor" id="line-10"></span><p class="line862">如果你需要编译一个内核的驱动程序（模块），很可能你<strong>并不</strong>需要安装整个内核源代码。也许你只需要安装 kernel-devel 这个组件。（然而，假若你肯定须要完整的源代码目录树，请遁从第二部份的指示。） <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span></p><p class="line874">CentOS-7 只有一个 kernel-devel 组件： <span class="anchor" id="line-13"></span><span class="anchor" id="line-14"></span></p><ul><li>kernel-devel（64 位元的结构） <span class="anchor" id="line-15"></span><span class="anchor" id="line-16"></span></li></ul><p class="line874">CentOS-6 只有一个 kernel-devel 组件： <span class="anchor" id="line-17"></span><span class="anchor" id="line-18"></span></p><ul><li>kernel-devel（32 及 64 位元的结构） <span class="anchor" id="line-19"></span><span class="anchor" id="line-20"></span></li></ul><p class="line874">CentOS-5 总共有三个 kernel-devel 组件： <span class="anchor" id="line-21"></span><span class="anchor" id="line-22"></span></p><ul><li>kernel-devel（32 及 64 位元的结构） <span class="anchor" id="line-23"></span></li><li>kernel-xen-devel（32 及 64 位元的结构） <span class="anchor" id="line-24"></span></li><li>kernel-PAE-devel（只支持 32 位元的结构） <span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span></li></ul><p class="line874">如果你使用标准内核（举个例说），你可以这样安装 kernel-devel： <span class="anchor" id="line-27"></span><span class="anchor" id="line-28"></span></p><p class="line867"><span class="anchor" id="line-29"></span></p><pre>[root@host]# yum install kernel-devel
+<span class="anchor" id="line-30"></span></pre><span class="anchor" id="line-31"></span><p class="line874">你可以用这个指令来断定使用中的内核版本： <span class="anchor" id="line-32"></span><span class="anchor" id="line-33"></span></p><p class="line867"><span class="anchor" id="line-34"></span></p><pre>[root@host]# uname -r
+<span class="anchor" id="line-35"></span></pre><span class="anchor" id="line-36"></span><p class="line874">它的输出会有以下的样子： <span class="anchor" id="line-37"></span><span class="anchor" id="line-38"></span></p><p class="line867"><span class="anchor" id="line-39"></span></p><pre>2.6.18-406.el5xen
+<span class="anchor" id="line-40"></span></pre><span class="anchor" id="line-41"></span><p class="line874">在这个样例里，所安装的内核是 xen，而安装相关的 kernel-devel 组件的方法是： <span class="anchor" id="line-42"></span><span class="anchor" id="line-43"></span></p><p class="line867"><span class="anchor" id="line-44"></span></p><pre>[root@host]# yum install kernel-xen-devel
+<span class="anchor" id="line-45"></span></pre><span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><p class="line867"><img alt="&lt;!&gt;" height="15" src="./zh HowTos I need the Kernel Source - CentOS Wiki_files/attention.png" title="&lt;!&gt;" width="15"> 请确定你所安装的 kernel-devel 组件<strong>吻合</strong>你所采用的内核。详情请参阅<a href="http://wiki.centos.org/FAQ/CentOS5#head-982df94d7e396895cca5bf15e915d6b3d4c9652b">这条常见问题</a>。 <span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span></p><p class="line862">如果你的内核因为来自较旧的目录树而未被 <a href="http://wiki.centos.org/zh/PackageManagement/Yum">yum</a> 列出，你可以手动式地从 <a class="http" href="http://vault.centos.org/">CentOS Vault</a>下载它。 <span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span></p><p class="line862">CentOS-7：请在 <strong>7.N.YYMM</strong>/<strong>os</strong>/<strong>x86_64</strong>/<strong>Packages</strong>/ 或 <strong>7.N.YYMM</strong>/<strong>updates</strong>/<strong>x86_64</strong>/<strong>Packages</strong>/ 目录内找寻 <strong>kernel-devel-<em></em></strong><em>版本</em><strong>.x86_64.rpm</strong> <span class="anchor" id="line-52"></span><span class="anchor" id="line-53"></span></p><p class="line862">CentOS-6：请在 <strong>6.N</strong>/<strong>os</strong>/<em>arch</em>/<strong>Packages</strong>/ 或 <strong>6.N</strong>/<strong>updates</strong>/<em>arch</em>/<strong>Packages</strong>/ 目录内找寻 <strong>kernel-devel-<em></em></strong><em>版本.结构</em><strong>.rpm</strong> <span class="anchor" id="line-54"></span><span class="anchor" id="line-55"></span></p><p class="line862">CentOS-5：请在 <strong>5.N</strong>/<strong>os</strong>/<em>arch</em>/<strong>CentOS</strong>/ 或 <strong>5.N</strong>/<strong>updates</strong>/<em>arch</em>/<strong>RPMS</strong>/ 目录内找寻<strong>kernel</strong>[<em>-类型</em>]<strong>-devel-<em></em></strong><em>版本.结构</em><strong>.rpm</strong> <span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span></p><p class="line862">当你安装了合适的 <strong>kernel</strong>[-<em>类型</em>]-<strong>devel</strong>-<em>版本.结构</em><strong>.rpm</strong> 组件，请尝试编译你的模块。这样做是应该行得通的。假若事实并非如此，请提供反馈给模块的开发者，因为这是设计所有新内核模块时应采用的编译方式。 <span class="anchor" id="line-58"></span><span class="anchor" id="line-59"></span></p><p class="line867">
+</p><h2 id="head-940c9908fff987db121be81944a43e5aa88dcd6b">2. 如果你真的需要整个内核的源代码</h2>
+<span class="anchor" id="line-60"></span><p class="line874">如果你真的因为某个原因需要整个内核的源代码，它是有被提供的。 <span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span></p><p class="line862">以一个<strong>不是 root 用户</strong>的用户，创建一个以 ~/rpmbuild 为基础的目录树： <span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span></p><p class="line867"><span class="anchor" id="line-65"></span></p><pre>[user@host]$ mkdir -p ~/rpmbuild/{BUILD,BUILDROOT,RPMS,SOURCES,SPECS,SRPMS}
+<span class="anchor" id="line-66"></span>[user@host]$ echo '%_topdir %(echo $HOME)/rpmbuild' &gt; ~/.rpmmacros
+<span class="anchor" id="line-67"></span></pre><span class="anchor" id="line-68"></span><p class="line867"><img alt="&lt;!&gt;" height="15" src="./zh HowTos I need the Kernel Source - CentOS Wiki_files/attention.png" title="&lt;!&gt;" width="15"> 我们<strong>强烈</strong>推荐你<strong>不要</strong>以 root 的身份构建软件包。（见：<a class="http" href="http://www.owlriver.com/tips/non-root/">Building Source RPM as non-root under CentOS</a>） <span class="anchor" id="line-69"></span><span class="anchor" id="line-70"></span></p><p class="line867"></p><hr><p class="line874"> <span class="anchor" id="line-71"></span><span class="anchor" id="line-72"></span></p><p class="line867"><strong>要在 CentOS-7 安装源代码组件及工具</strong>： <span class="anchor" id="line-73"></span><span class="anchor" id="line-74"></span></p><p class="line862">以 root 的身份安装 rpm-build、redhat-rpm-config、asciidoc、hmaccalc、perl-ExtUtils-Embed、pesign、xmlto、audit-libs-devel、binutils-devel、elfutils-devel、elfutils-libelf-devel、ncurses-devel,newt-devel、numactl-devel、pciutils-dedvel、python-devel 及 zlib-devel 组件： <span class="anchor" id="line-75"></span><span class="anchor" id="line-76"></span></p><p class="line867"><span class="anchor" id="line-77"></span></p><pre>[root@host]# yum install rpm-build redhat-rpm-config asciidoc hmaccalc perl-ExtUtils-Embed pesign xmlto
+<span class="anchor" id="line-78"></span>[root@host]# yum install audit-libs-devel binutils-devel elfutils-devel elfutils-libelf-devel
+<span class="anchor" id="line-79"></span>[root@host]# yum install ncurses-devel newt-devel numactl-devel pciutils-devel python-devel zlib-devel
+<span class="anchor" id="line-80"></span></pre><span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span><p class="line874">从这些地方找寻内核的源代码组件： <span class="anchor" id="line-83"></span><span class="anchor" id="line-84"></span></p><ul><li><p class="line891"><a class="http" href="http://vault.centos.org/7.N.YYMM/os/Source/SPackages/">http://vault.centos.org/7.N.YYMM/os/Source/SPackages/</a> <span class="anchor" id="line-85"></span></p></li><li><p class="line891"><a class="http" href="http://vault.centos.org/7.N.YYMM/updates/Source/SPackages/">http://vault.centos.org/7.N.YYMM/updates/Source/SPackages/</a> <span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span></p></li></ul><p class="line874">（请以相关的副版本编号、年度及月份取代 N.YYMM。） <span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span></p><p class="line862">以一个<strong>不是 root</strong>的普通户口，执行以下指令来安装源代码组件： <span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span></p><p class="line867"><span class="anchor" id="line-92"></span></p><pre>[user@host]$ rpm -i http://vault.centos.org/7.1.1503/updates/Source/SPackages/kernel-3.10.0-229.7.2.el7.src.rpm 2&gt;&amp;1 | grep -v exist
+<span class="anchor" id="line-93"></span></pre><span class="anchor" id="line-94"></span><p class="line867"><span class="anchor" id="line-95"></span></p><p class="line867"><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span></p><p class="line867"></p><hr><p class="line874"> <span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span></p><p class="line867"><strong>要在 CentOS-6 安装源代码组件及工具</strong>： <span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span></p><p class="line862">以 root 的身份安装 rpm-build、redhat-rpm-config、asciidoc、hmaccalc、perl-ExtUtils-Embed、xmlto、audit-libs-devel、binutils-devel、elfutils-devel、elfutils-libelf-devel、newt-devel、python-devel 及 zlib-devel 组件： <span class="anchor" id="line-102"></span><span class="anchor" id="line-103"></span></p><p class="line867"><span class="anchor" id="line-104"></span></p><pre>[root@host]# yum install rpm-build redhat-rpm-config asciidoc hmaccalc perl-ExtUtils-Embed xmlto
+<span class="anchor" id="line-105"></span>[root@host]# yum install audit-libs-devel binutils-devel elfutils-devel elfutils-libelf-devel
+<span class="anchor" id="line-106"></span>[root@host]# yum install newt-devel python-devel zlib-devel
+<span class="anchor" id="line-107"></span></pre><span class="anchor" id="line-108"></span><span class="anchor" id="line-109"></span><p class="line874">从这些地方找寻内核的源代码组件： <span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span></p><ul><li><p class="line891"><a class="http" href="http://vault.centos.org/6.N/os/Source/SPackages/">http://vault.centos.org/6.N/os/Source/SPackages/</a> <span class="anchor" id="line-112"></span></p></li><li><p class="line891"><a class="http" href="http://vault.centos.org/6.N/updates/Source/SPackages/">http://vault.centos.org/6.N/updates/Source/SPackages/</a> <span class="anchor" id="line-113"></span></p></li></ul><p class="line874">（请以相关的副版本编号取代 N。） <span class="anchor" id="line-114"></span><span class="anchor" id="line-115"></span></p><p class="line862">以一个<strong>不是 root 用户</strong>的户口，执行以下指令来安装源代码组件： <span class="anchor" id="line-116"></span><span class="anchor" id="line-117"></span></p><pre>[user@host]$ rpm -i http://vault.centos.org/6.6/updates/Source/SPackages/kernel-2.6.32-504.30.3.el6.src.rpm 2&gt;&amp;1 | grep -v exist
+<span class="anchor" id="line-118"></span></pre><span class="anchor" id="line-119"></span><p class="line867"><span class="anchor" id="line-120"></span></p><p class="line867"><span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span></p><p class="line867"></p><hr><p class="line874"> <span class="anchor" id="line-123"></span><span class="anchor" id="line-124"></span></p><p class="line867"><strong>要在 CentOS-5 安装源代码组件及工具</strong>： <span class="anchor" id="line-125"></span><span class="anchor" id="line-126"></span></p><p class="line874">以 root 的身份安装 rpm-build、redhat-rpm-config 及 unifdef 组件： <span class="anchor" id="line-127"></span><span class="anchor" id="line-128"></span></p><p class="line867"><span class="anchor" id="line-129"></span></p><pre>[root@host]# yum install rpm-build redhat-rpm-config unifdef
+<span class="anchor" id="line-130"></span></pre><span class="anchor" id="line-131"></span><span class="anchor" id="line-132"></span><p class="line874">从这些地方找寻内核的源代码组件： <span class="anchor" id="line-133"></span><span class="anchor" id="line-134"></span></p><ul><li><p class="line891"><a class="http" href="http://vault.centos.org/5.N/updates/SRPMS/">http://vault.centos.org/5.N/updates/SRPMS/</a> <span class="anchor" id="line-135"></span></p></li><li><p class="line891"><a class="http" href="http://vault.centos.org/5.N/os/SRPMS/">http://vault.centos.org/5.N/os/SRPMS/</a> <span class="anchor" id="line-136"></span></p></li></ul><p class="line874">（请以相关的更新版本编号取代 N。） <span class="anchor" id="line-137"></span><span class="anchor" id="line-138"></span></p><p class="line862">以一个<strong>不是 root 用户</strong>的户口，执行以下指令来安装源代码组件： <span class="anchor" id="line-139"></span><span class="anchor" id="line-140"></span></p><pre>[user@host]$ rpm -i http://vault.centos.org/5.11/updates/SRPMS/kernel-2.6.18-406.el5.src.rpm 2&gt;&amp;1 | grep -v exist
+<span class="anchor" id="line-141"></span></pre><span class="anchor" id="line-142"></span><p class="line867"><span class="anchor" id="line-143"></span></p><p class="line867"><span class="anchor" id="line-144"></span><span class="anchor" id="line-145"></span></p><p class="line867"></p><hr><p class="line874"> <span class="anchor" id="line-146"></span><strong>现在源代码组件已经安装了，请解压及预备源代码文件</strong>： <span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span></p><p class="line867"><span class="anchor" id="line-149"></span></p><pre>[user@host]$ cd ~/rpmbuild/SPECS
+<span class="anchor" id="line-150"></span>[user@host SPECS]$ rpmbuild -bp --target=$(uname -m) kernel.spec
+<span class="anchor" id="line-151"></span></pre><span class="anchor" id="line-152"></span><p class="line874">$(uname -m) 这个值将目标结构设置为你的现有内核的结构。一般来说这是可行的，因为多数人需要以 i686 或 x86_64 为目标。 <span class="anchor" id="line-153"></span><span class="anchor" id="line-154"></span></p><p class="line862">现在内核的源代码目录树可以在 <tt class="backtick">~/rpmbuild/BUILD/kernel*/linux*/</tt> 这个目录内找得到。 <span class="anchor" id="line-155"></span><span class="anchor" id="line-156"></span></p><p class="line867"><small>Translation of revision 238~ <span class="anchor" id="line-157"></span><span class="anchor" id="bottom"></span></small></p></div><p id="pageinfo" class="info" lang="zh" dir="ltr"><small>zh/HowTos/I need the Kernel Source  (2015-07-16 02:42:24由<span title="mirage1993 @ 121.48.178.0[121.48.178.0]"><a href="http://wiki.centos.org/HoLee" title="mirage1993 @ 121.48.178.0[121.48.178.0]">HoLee</a></span>编辑)</small></p><small>
+
+<div id="pagebottom"></div>
+</small></div><small>
+
+<div id="footer">
+
+<div class="pageline"><hr style="display:none;"></div>
+
+<ul class="navibar">
+<li class="wikilink"><a href="http://wiki.centos.org/FrontPage">FrontPage</a></li><li class="wikilink"><a href="http://wiki.centos.org/Documentation">Help</a></li><li class="wikilink"><a href="http://wiki.centos.org/TipsAndTricks">Tips and Tricks</a></li><li class="wikilink"><a href="http://wiki.centos.org/HowTos">How To</a></li><li class="wikilink"><a href="http://wiki.centos.org/FAQ">FAQs</a></li><li class="wikilink"><a href="http://wiki.centos.org/Events">Events</a></li><li class="wikilink"><a href="http://wiki.centos.org/Contribute">Contribute</a></li><li class="wikilink"><a href="http://wiki.centos.org/Newsletter/Latest">Newsletter</a></li><li class="wikilink"><a href="http://wiki.centos.org/RecentChanges">Changelog</a></li><li class="current"><a href="./zh HowTos I need the Kernel Source - CentOS Wiki_files/zh HowTos I need the Kernel Source - CentOS Wiki.html">I need the Kernel Source</a></li>
+</ul>
+
+
+<div id="credits">
+<strong><a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">
+<img alt="Creative Commons License" style="border-width:0" src="./zh HowTos I need the Kernel Source - CentOS Wiki_files/cc-somerights20.png">
+</a></strong>
+<br>This wiki is licensed under a <em> 
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-Share Alike 3.0 Unported License</a></em>.
+</div>
+
+</div>
+
+
+</small></body></html>

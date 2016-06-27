@@ -1,0 +1,38 @@
+trap可以使你在脚本中捕捉信号，该命令的一般形式为：
+trap name signal(s)
+其中，name是被捕捉到信号后所采取的一序列操作。实际生活中，name一般是一个专门用来处理所捕捉到的信号的函数。name需要用双引号引起来，signal就是待捕捉的信号。
+脚本在捕捉到一个信号后，通常会采取某些行动。最常见的动作包括：
+1）清除临时文件
+2）忽略该信号
+3）询问用户是否终止该脚本的运行。
+常用的信号包括1，2，3，15
+1－－－－SIGHUP   挂起或父进程被杀死
+2－－－－SIGINT     来自键盘的中断<CTRL + C>
+3－－－－SIGQUIT   从键盘退出
+15－－－－SIGTERM 软终止
+
+实例：trap.sh
+#!/bin/sh
+trap "my_exit" 1 2 3 15
+
+LOOP=0
+HOLD1=/tmp/HOLD1.
+HOLD2=/tmp/HOLD2.
+
+my_exit()
+{
+echo -e "\nReceived interrupt..."
+echo "Do you wish to really exit ??"
+echo " Y: Yes"
+echo " N: No"
+echo -n "Your choice [Y..N] >"
+read ANS
+case $ANS in
+Y|y) exit 1;;
+N|n);;
+esac
+}
+echo -n "Enter your name: "
+read NAME
+echo -n "Enter your age: "
+read AGE
